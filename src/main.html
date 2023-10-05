@@ -1,0 +1,97 @@
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-height: 80%;
+  overflow-y: scroll;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 36px;
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+
+.remove {
+  font-size: 24px;
+  color: red;
+}
+
+.input {
+  display: flex;
+  width: 80%;
+}
+
+.input input {
+  flex-grow: 1;
+  font-size: 36px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="list">
+<div class="item">user value <span class="remove">X</span></div>
+<div class="item">user value 2 <span class="remove">X</span></div>
+</div>
+<div class="input">
+<input type="text" placeholder="enter text here to add value...">
+</div>
+</div>
+<script>
+// get the elements
+let list = document.querySelector(".list");
+let input = document.querySelector("input");
+
+// add a listener for the input
+input.addEventListener("keyup", function(event) {
+    // if the user presses enter
+    if (event.keyCode === 13) {
+        // get the value of the input
+        let value = input.value.trim();
+        // if the value is not empty
+        if (value) {
+            // create a new item element
+            let item = document.createElement("div");
+            item.className = "item";
+            item.innerHTML = `${value} <span class="remove">X</span>`;
+            // append the item to the list
+            list.appendChild(item);
+            // clear the input
+            input.value = "";
+        }
+    }
+});
+
+// add a listener for the list
+list.addEventListener("click", function(event) {
+    // if the user clicks on a remove button
+    if (event.target.classList.contains("remove")) {
+        // get the parent item element
+        let item = event.target.parentElement;
+        // remove the item from the list
+        list.removeChild(item);
+    }
+});
+</script>
+</body>
+</html>
