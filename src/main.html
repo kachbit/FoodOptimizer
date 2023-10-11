@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 <style>
@@ -24,6 +25,7 @@
 
 .item {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   font-size: 36px;
@@ -46,49 +48,97 @@
   font-size: 36px;
 }
 
+.upload-btn {
+  padding: 5px;
+  font-size: 16px;
+  background: #9198ab;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 5px;
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Baloo+2:wght@500&display=swap');
 
-h1,h2,h3 {
-margin:20px;
-text-align:center;
+h1, h2, h3 {
+  margin: 20px;
+  text-align: center;
 }
+
 .btn-a {
-padding:10px;font-family: 'Baloo 2';cursor:pointer;background:transparent;color:#9198ab;border:2px solid #9198ab;transition:all 0.2s ease-in-out;user-select:none;backdrop-filter: blur(8px);-webkit-backdrop-filter: blur(8px);border-radius:0px;margin:3px;min-width:40px;font-size:18px;
+  padding: 10px;
+  font-family: 'Baloo 2';
+  cursor: pointer;
+  background: transparent;
+  color: #9198ab;
+  border: 2px solid #9198ab;
+  transition: all 0.2s ease-in-out;
+  user-select: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 0px;
+  margin: 3px;
+  min-width: 40px;
+  font-size: 18px;
 }
+
 .btn-a:hover {
-background:#4d4f5723;color:#4f535e;border-color:#4f535e;transition:all 0.2s ease-in-out;
+  background: #4d4f5723;
+  color: #4f535e;
+  border-color: #4f535e;
+  transition: all 0.2s ease-in-out;
 }
+
 button {
-padding:12px;font-family: 'Baloo 2';cursor:pointer;background:rgba(37, 37, 37, 0.747);color:rgba(240,240,240,0.7);border:2px solid rgba(99,99,99,0.5);transition:all 0.2s ease-in-out;user-select:none;backdrop-filter: blur(8px);-webkit-backdrop-filter: blur(8px);border-radius:7px;margin:3px;min-width:40px;font-size:18px;height:fit-content;
+  padding: 12px;
+  font-family: 'Baloo 2';
+  cursor: pointer;
+  background: rgba(37, 37, 37, 0.747);
+  color: rgba(240, 240, 240, 0.7);
+  border: 2px solid rgba(99, 99, 99, 0.5);
+  transition: all 0.2s ease-in-out;
+  user-select: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 7px;
+  margin: 3px;
+  min-width: 40px;
+  font-size: 18px;
+  height: fit-content;
 }
+
 button:hover {
-background:rgba(0, 0, 0, 0.847);color:#7e7e7e;transition:all 0.2s ease-in-out;
+  background: rgba(0, 0, 0, 0.847);
+  color: #7e7e7e;
+  transition: all 0.2s ease-in-out;
 }
+
 body {
-background:#222222;
-color:#9fa3ab;
-font-family:Trebuchet MS, sans-serif;
+  background: #222222;
+  color: #9fa3ab;
+  font-family: Trebuchet MS, sans-serif;
 }
-input[type=text], select {
-background:#000000;
+
+input[type=text],
+select {
+  background: #000000;
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
-  border:3px solid rgba(200,200,200,0.6);
-  border-radius:3px;
+  border: 3px solid rgba(200, 200, 200, 0.6);
+  border-radius: 3px;
   box-sizing: border-box;
-  outline:none;
-  color: rgba(240,240,240,0.8);
+  outline: none;
+  color: rgba(240, 240, 240, 0.8);
   font-size: 16px;
-  
 }
 
-input[type=text]:focus, select:focus {
-transition: all .6s;
+input[type=text]:focus,
+select:focus {
+  transition: all 0.6s;
   border: 3px solid #d2d3d6;
 }
-
 
 textarea {
   width: 100%;
@@ -99,18 +149,55 @@ textarea {
   border-radius: 4px;
   background-color: #f8f8f8;
   resize: none;
-  outline:none;
-  background:black;
+  outline: none;
+  background: black;
   color: #ccc;
 }
- 
+
+
+
+
+.item .actions {
+  display: flex;
+  align-items: center;
+}
+
+.upload-btn {
+  padding: 5px;
+  font-size: 16px;
+  background: #9198ab;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.upload-btn:hover {
+  background: #4d4f57;
+}
+
+.remove-btn {
+  padding: 5px;
+  font-size: 16px;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.remove-btn:hover {
+  background: #ff0000;
+}
+
 </style>
 </head>
 <body>
 <div class="container">
 <div class="list">
-<div class="item">user value <span class="remove">x</span></div>
-<div class="item">user value 2 <span class="remove">x</span></div>
+<!-- Saved items will be loaded here -->
 </div>
 <div class="input">
 <input type="text" placeholder="enter text here to add value...">
@@ -121,36 +208,142 @@ textarea {
 let list = document.querySelector(".list");
 let input = document.querySelector("input");
 
-// add a listener for the input
-input.addEventListener("keyup", function(event) {
-    // if the user presses enter
-    if (event.keyCode === 13) {
-        // get the value of the input
-        let value = input.value.trim();
-        // if the value is not empty
-        if (value) {
-            // create a new item element
-            let item = document.createElement("div");
-            item.className = "item";
-            item.innerHTML = `${value} <span class="remove">X</span>`;
-            // append the item to the list
-            list.appendChild(item);
-            // clear the input
-            input.value = "";
-        }
-    }
+// Load the items from localStorage when the page loads
+document.addEventListener("DOMContentLoaded", () => {
+  const savedItems = JSON.parse(localStorage.getItem("items")) || [];
+  savedItems.forEach((item) => {
+    addItemToList(item.text, item.image);
+  });
 });
 
-// add a listener for the list
-list.addEventListener("click", function(event) {
-    // if the user clicks on a remove button
-    if (event.target.classList.contains("remove")) {
-        // get the parent item element
-        let item = event.target.parentElement;
-        // remove the item from the list
-        list.removeChild(item);
+// Function to add an item to the list
+function addItemToList(text, image) {
+  let item = document.createElement("div");
+  item.className = "item";
+  item.innerHTML = `<div>${text} <span class="remove">X</span></div>`;
+  if (image) {
+    const img = document.createElement("img");
+    img.src = image;
+    img.style.maxHeight = '100px';
+    item.appendChild(img);
+    
+    // Create a "Remove Image" button for each item
+    const removeButton = document.createElement("button");
+    removeButton.className = "remove-btn";
+    removeButton.innerText = "Remove Image";
+    item.appendChild(removeButton);
+  }
+  else {
+    // Create an "Upload Image" button for items without an image
+    const uploadButton = document.createElement("button");
+    uploadButton.className = "upload-btn";
+    uploadButton.innerText = "Upload Image";
+    item.appendChild(uploadButton);
+  }
+  
+  list.appendChild(item);
+}
+
+// Function to save items to localStorage
+function saveItemsToLocalStorage() {
+  const items = Array.from(list.children).map((item) => {
+    const text = item.textContent.split('X')[0].trim();
+    const image = item.querySelector('img') ? item.querySelector('img').src : null;
+    return { text, image };
+  });
+  localStorage.setItem("items", JSON.stringify(items));
+}
+
+// Function to handle image upload
+function handleImageUpload(item) {
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = "image/*";
+
+  input.addEventListener("change", (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = document.createElement("img");
+        img.outerHTML = img.outerHTML+ "<br>"
+        img.src = e.target.result;
+        img.style.maxHeight = '100px';
+        item.appendChild(img);
+        
+        // Create a "Remove Image" button
+        const removeButton = document.createElement("button");
+        removeButton.className = "remove-btn";
+        removeButton.innerText = "Remove Image";
+        item.appendChild(removeButton);
+        
+        // Remove the "Upload Image" button
+        const uploadButton = item.querySelector(".upload-btn");
+        item.removeChild(uploadButton);
+        
+        saveItemsToLocalStorage();
+      };
+      reader.readAsDataURL(file);
     }
+  });
+
+  input.click();
+}
+
+// Function to handle image removal
+function handleImageRemoval(item) {
+  const img = item.querySelector("img");
+  const removeButton = item.querySelector(".remove-btn");
+  item.removeChild(img);
+  item.removeChild(removeButton);
+  
+  // Create an "Upload Image" button
+  const uploadButton = document.createElement("button");
+  uploadButton.className = "upload-btn";
+  uploadButton.innerText = "Upload Image";
+  item.appendChild(uploadButton);
+  
+  saveItemsToLocalStorage();
+}
+
+// Add a listener for the list
+list.addEventListener("click", function(event) {
+  if (event.target.classList.contains("upload-btn")) {
+    const item = event.target.parentElement;
+    handleImageUpload(item);
+  } else if (event.target.classList.contains("remove-btn")) {
+    const item = event.target.parentElement;
+    handleImageRemoval(item);
+  }
 });
+
+// Add a listener for the "remove" button
+// Add a listener for the "remove" button
+list.addEventListener("click", function(event) {
+  if (event.target.classList.contains("remove")) {
+    let item = event.target.parentElement.parentElement; // Select the entire list item div
+    list.removeChild(item);
+    saveItemsToLocalStorage();
+  }
+});
+// Add a listener for the input
+input.addEventListener("keyup", function(event) {
+  // if the user presses enter
+  if (event.keyCode === 13) {
+    // get the value of the input
+    let value = input.value.trim();
+    // if the value is not empty
+    if (value) {
+      // create a new item element
+      addItemToList(value);
+      // clear the input
+      input.value = "";
+      // save the updated list to localStorage
+      saveItemsToLocalStorage();
+    }
+  }
+});
+
 </script>
 </body>
 </html>
