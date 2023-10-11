@@ -191,7 +191,12 @@ textarea {
 .remove-btn:hover {
   background: #ff0000;
 }
-
+/* Add a media query for smaller screens */
+@media (max-width: 1067px) {
+  .item img {
+    min-height: 400px; /* Adjust the desired size as needed */
+  }
+}
 </style>
 </head>
 <body>
@@ -255,40 +260,44 @@ function saveItemsToLocalStorage() {
 }
 
 // Function to handle image upload
+// Function to handle image upload
 function handleImageUpload(item) {
+  // Create a file input element
   const input = document.createElement("input");
   input.type = "file";
   input.accept = "image/*";
 
+  // Trigger click event of the file input element
+  input.click();
+
+  // Add event listener to handle file selection
   input.addEventListener("change", (event) => {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
         const img = document.createElement("img");
-        img.outerHTML = img.outerHTML+ "<br>"
         img.src = e.target.result;
         img.style.maxHeight = '100px';
-        item.appendChild(img);
         
         // Create a "Remove Image" button
         const removeButton = document.createElement("button");
         removeButton.className = "remove-btn";
         removeButton.innerText = "Remove Image";
-        item.appendChild(removeButton);
         
         // Remove the "Upload Image" button
         const uploadButton = item.querySelector(".upload-btn");
         item.removeChild(uploadButton);
         
+        item.appendChild(img);
+        item.appendChild(removeButton);
         saveItemsToLocalStorage();
       };
       reader.readAsDataURL(file);
     }
   });
-
-  input.click();
 }
+
 
 // Function to handle image removal
 function handleImageRemoval(item) {
