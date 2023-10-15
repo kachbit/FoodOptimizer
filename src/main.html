@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 * {
   box-sizing: border-box;
@@ -27,6 +30,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  flex-direction: column;
   justify-content: space-between;
   font-size: 36px;
   padding: 10px;
@@ -106,6 +110,7 @@ button {
   min-width: 40px;
   font-size: 18px;
   height: fit-content;
+  margin: 10px;
 }
 
 button:hover {
@@ -191,10 +196,20 @@ textarea {
 .remove-btn:hover {
   background: #ff0000;
 }
+img {
+  margin:10px;
+  min-height: 200px;
+}
 /* Add a media query for smaller screens */
 @media (max-width: 1067px) {
   .item img {
-    min-height: 400px; /* Adjust the desired size as needed */
+    min-height: 300px; /* Adjust the desired size as needed */
+  }
+}
+
+@media (max-width: 603px) {
+  .item img {
+    min-height: 150px; /* Adjust the desired size as needed */
   }
 }
 </style>
